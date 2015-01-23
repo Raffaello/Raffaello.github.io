@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://raffaello.github.io/sitemap.xml 
+Sitemap: https://github.com/Raffaello/Raffaello.github.io.git/sitemap.xml 
