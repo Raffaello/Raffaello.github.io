@@ -4,7 +4,7 @@
   <title><![CDATA[Raffaello Bertini Blog]]></title>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/atom.xml" rel="self"/>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/"/>
-  <updated>2015-01-23T12:33:45+00:00</updated>
+  <updated>2015-01-23T12:52:37+00:00</updated>
   <id>https://github.com/Raffaello/Raffaello.github.io.git/</id>
   <author>
     <name><![CDATA[Raffaello Bertini]]></name>
@@ -14,11 +14,93 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Setting Up Octopress for Githubpa Pages]]></title>
-    <link href="https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/23/setting-up-octopress-for-githubpa-pages/"/>
+    <title type="html"><![CDATA[Setting Up Octopress for Github Pages]]></title>
+    <link href="https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/23/setting-up-octopress-for-github-pages/"/>
     <updated>2015-01-23T12:16:22+00:00</updated>
-    <id>https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/23/setting-up-octopress-for-githubpa-pages</id>
-    <content type="html"><![CDATA[
+    <id>https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/23/setting-up-octopress-for-github-pages</id>
+    <content type="html"><![CDATA[<h2>Prerequisites</h2>
+
+<p>Install:</p>
+
+<ul>
+<li>git</li>
+<li>ruby >= 1.9</li>
+<li>clone octopress repo</li>
+<li>in some system is required <code>ruby-devel</code></li>
+<li>rake</li>
+</ul>
+
+
+<p>further info here:
+<a href="http://octopress.org/docs/setup/">http://octopress.org/docs/setup/</a></p>
+
+<h2>Setup</h2>
+
+<p>Now it is required to execute the following commands
+inside the <code>octopress</code> folder:</p>
+
+<ul>
+<li><code>gem install bundler</code></li>
+</ul>
+
+
+<p>After the operation completed, in some system is required to add a gem
+in the &lsquo;Gemfile&rsquo; so edit it appending a dependency:</p>
+
+<ul>
+<li><code>gem 'json'</code></li>
+</ul>
+
+
+<p>Now we can finish the setup with:</p>
+
+<ul>
+<li><code>bundle install</code></li>
+</ul>
+
+
+<p>and finish with installing the default theme:</p>
+
+<ul>
+<li><code>rake install</code></li>
+</ul>
+
+
+<h2>GitHub Page</h2>
+
+<p>Execute the following command and it will ask you for
+your repository URI:</p>
+
+<ul>
+<li><code>rake setup_github_pages</code></li>
+</ul>
+
+
+<p>After that run:</p>
+
+<ul>
+<li>&lsquo;rake generate&rsquo;</li>
+</ul>
+
+
+<h2>Deploy</h2>
+
+<p>Simply run:</p>
+
+<ul>
+<li><code>rake deploy</code></li>
+</ul>
+
+
+<h3>Pre Deploy operation</h3>
+
+<p>It can be required to do a pull operation in the <code>_deploy</code> folder,
+if it is the case because the deploy fail, run inside the <code>_deploy</code> folder:</p>
+
+<ul>
+<li><code>git pull orgin master</code></li>
+</ul>
+
 ]]></content>
   </entry>
   
