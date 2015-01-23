@@ -4,7 +4,7 @@
   <title><![CDATA[Raffaello Bertini Blog]]></title>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/atom.xml" rel="self"/>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/"/>
-  <updated>2015-01-23T12:54:24+00:00</updated>
+  <updated>2015-01-23T12:56:31+00:00</updated>
   <id>https://github.com/Raffaello/Raffaello.github.io.git/</id>
   <author>
     <name><![CDATA[Raffaello Bertini]]></name>
@@ -98,7 +98,7 @@ your repository URI:</p>
 if it is the case because the deploy fail, run inside the <code>_deploy</code> folder:</p>
 
 <ul>
-<li><code>git pull orgin master</code></li>
+<li><code>git pull origin master</code></li>
 </ul>
 
 ]]></content>
