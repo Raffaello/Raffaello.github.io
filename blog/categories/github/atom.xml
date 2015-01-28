@@ -4,7 +4,7 @@
   <title><![CDATA[Category: github | Raffaello Bertini Blog]]></title>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/blog/categories/github/atom.xml" rel="self"/>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/"/>
-  <updated>2015-01-28T22:37:33+00:00</updated>
+  <updated>2015-01-28T22:46:27+00:00</updated>
   <id>https://github.com/Raffaello/Raffaello.github.io.git/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -45,6 +45,9 @@ inside the <code>octopress</code> folder:</p>
 
 <p>After the operation completed, in some system is required to add a gem
 in the &lsquo;Gemfile&rsquo; so edit  it appending a dependency:</p>
+
+<!--more-->
+
 
 <ul>
 <li><code>gem 'json'</code></li>

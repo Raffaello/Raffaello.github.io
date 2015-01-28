@@ -4,7 +4,7 @@
   <title><![CDATA[Raffaello Bertini Blog]]></title>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/atom.xml" rel="self"/>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/"/>
-  <updated>2015-01-28T22:37:33+00:00</updated>
+  <updated>2015-01-28T22:46:27+00:00</updated>
   <id>https://github.com/Raffaello/Raffaello.github.io.git/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -26,6 +26,9 @@ It use doctrine ORM for mapping entities, check on-line documentations for other
 <a href="http://sonata-project.org/bundles/admin/2-3/doc/reference/installation.html">http://sonata-project.org/bundles/admin/2-3/doc/reference/installation.html</a></p>
 
 <p>The final <code>composer.json</code> will look like:</p>
+
+<!--more-->
+
 
 <figure class='code'><figcaption><span>composer.json </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -2341,6 +2344,9 @@ inside the <code>octopress</code> folder:</p>
 
 <p>After the operation completed, in some system is required to add a gem
 in the &lsquo;Gemfile&rsquo; so edit  it appending a dependency:</p>
+
+<!--more-->
+
 
 <ul>
 <li><code>gem 'json'</code></li>
