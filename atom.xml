@@ -4,7 +4,7 @@
   <title><![CDATA[Raffaello Bertini Blog]]></title>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/atom.xml" rel="self"/>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/"/>
-  <updated>2015-01-28T22:33:33+00:00</updated>
+  <updated>2015-01-28T22:34:24+00:00</updated>
   <id>https://github.com/Raffaello/Raffaello.github.io.git/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,18 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Symfony2 customize SonataUserBundle]]></title>
-    <link href="https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/28/symfony2-customize-sonatauserbundle/"/>
-    <updated>2015-01-28T22:29:24+00:00</updated>
-    <id>https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/28/symfony2-customize-sonatauserbundle</id>
-    <content type="html"><![CDATA[<p>for the first part see:
-<a href="http://raffaello.github.io/blog/2015/01/25/symfony2-integrate-fosuserbundle-and-sonataadmin/">http://raffaello.github.io/blog/2015/01/25/symfony2-integrate-fosuserbundle-and-sonataadmin/</a></p>
-
-<h1>&hellip;</h1>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Symfony2 integrate FOSUserBundle, SonataAdminBundle, SonataUserBundle]]></title>
@@ -2315,7 +2303,8 @@ needed for authentication.</p>
 <p>You can see the repository here:
 <a href="https://github.com/Raffaello/symfony2-example.git">https://github.com/Raffaello/symfony2-example.git</a></p>
 
-<p>The second part is here:</p>
+<p>The second part is here:
+<a href="http://raffaello.github.io/blog/2015/01/28/symfony2-customize-sonatauserbundle/">http://raffaello.github.io/blog/2015/01/28/symfony2-customize-sonatauserbundle/</a></p>
 ]]></content>
   </entry>
   
