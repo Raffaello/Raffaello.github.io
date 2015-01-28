@@ -4,11 +4,11 @@
   <title><![CDATA[Category: github | Raffaello Bertini Blog]]></title>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/blog/categories/github/atom.xml" rel="self"/>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/"/>
-  <updated>2015-01-25T19:38:00+00:00</updated>
+  <updated>2015-01-26T20:56:37+00:00</updated>
   <id>https://github.com/Raffaello/Raffaello.github.io.git/</id>
   <author>
-    <name><![CDATA[Raffaello Bertini]]></name>
-    
+    <name><![CDATA[]]></name>
+    <email><![CDATA[raffaellobertini@gmail.com]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
@@ -134,7 +134,7 @@ your repository URI:</p>
 <h3>Pre Deploy operation</h3>
 
 <p>It can be required to do a pull operation in the <code>_deploy</code> folder,
-if it is the case because the deploy fail, run inside the <code>_deploy</code> folder:</p>
+if it is the case, because the deploy has failed, inside the <code>_deploy</code> folder run:</p>
 
 <p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>git pull origin master
