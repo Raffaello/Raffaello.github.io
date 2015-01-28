@@ -240,7 +240,7 @@ in the Acme namespace.</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h1>configure FOS/UserBundle</h1>
+<h2>configure FOS/UserBundle</h2>
 
 <ul>
 <li><p>follow the wiki here for more details:
@@ -385,7 +385,7 @@ create the file <code>User.php</code> inside inside the path <code>src/Acme/User
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h1>configure sonata/admin bundle</h1>
+<h2>configure sonata/admin bundle</h2>
 
 <ul>
 <li>follow the wiki here:
@@ -393,7 +393,7 @@ create the file <code>User.php</code> inside inside the path <code>src/Acme/User
 </ul>
 
 
-<h2>configure sonata/block</h2>
+<h3>configure sonata/block</h3>
 
 <p>Every service used by the sonata&rsquo;s bundle is required
 to be explicited in the <code>sonata_block</code> configuration.</p>
@@ -424,7 +424,7 @@ to be explicited in the <code>sonata_block</code> configuration.</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h2>configure sonata/admin</h2>
+<h3>configure sonata/admin</h3>
 
 <p>After thar, configure the &lsquo;sonata_admin&rsquo; bundle
 like this:</p>
@@ -481,7 +481,7 @@ like this:</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h2>creating Admin class</h2>
+<h3>creating Admin class</h3>
 
 <p>In the &lsquo;UserBundle&rsquo; create a folder call <code>Admin</code>.
 Create two files called respectively:</p>
@@ -714,7 +714,7 @@ Create two files called respectively:</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h1>configure sonataUser</h1>
+<h2>configure sonataUser</h2>
 
 <p>follow the wiki here for more details:
 <a href="http://sonata-project.org/bundles/user/2-2/doc/index.html">http://sonata-project.org/bundles/user/2-2/doc/index.html</a></p>
@@ -790,12 +790,12 @@ or remove the <code>Users</code> in the <code>admin/dashboard</code> (rembember 
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h4>To Do by yourself</h4>
+<h3>To Do by yourself</h3>
 
 <p>config the SonataUserBundle as the UserBundle precedently create.
 (tips: <code>admin</code> folder)</p>
 
-<h1>configure the whole application</h1>
+<h2>configure the whole application</h2>
 
 <p>We have to configure the database parameters,
 paste in the <code>app/config/parameters.yml</code> the
@@ -817,7 +817,7 @@ following code:</p>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="c1"># This file is auto-generated during the composer install</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="c1">## This file is auto-generated during the composer install</span>
 </span><span class='line'><span class="l-Scalar-Plain">parameters</span><span class="p-Indicator">:</span>
 </span><span class='line'>  <span class="l-Scalar-Plain">database_driver</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">pdo_sqlite</span>
 </span><span class='line'>  <span class="l-Scalar-Plain">database_host</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">127.0.0.1</span>
@@ -2381,7 +2381,7 @@ with root or apache user.</p>
 you can enter as admin in your application and see the dashboard
 in <code>app_dev.php/admin</code>.</p>
 
-<h1>Conclusion</h1>
+<h2>Conclusion</h2>
 
 <p>We have illustraded in a wide way how can set up a first
 web application, however the UserBundle is not required,
