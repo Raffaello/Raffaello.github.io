@@ -4,7 +4,7 @@
   <title><![CDATA[Raffaello Bertini Blog]]></title>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/atom.xml" rel="self"/>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/"/>
-  <updated>2015-01-28T22:19:52+00:00</updated>
+  <updated>2015-01-28T22:22:01+00:00</updated>
   <id>https://github.com/Raffaello/Raffaello.github.io.git/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,15 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Setting up developing environment with Vagrant and PUPHPet]]></title>
-    <link href="https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/28/setting-up-developing-environment-with-vagrant-and-puphpet/"/>
-    <updated>2015-01-28T21:07:48+00:00</updated>
-    <id>https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/28/setting-up-developing-environment-with-vagrant-and-puphpet</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Symfony2 integrate FOSUserBundle, SonataAdminBundle, SonataUserBundle]]></title>
