@@ -1,33 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Raffaello Bertini Blog]]></title>
-  <link href="https://github.com/Raffaello/Raffaello.github.io.git/atom.xml" rel="self"/>
-  <link href="https://github.com/Raffaello/Raffaello.github.io.git/"/>
-  <updated>2015-01-28T22:19:52+00:00</updated>
-  <id>https://github.com/Raffaello/Raffaello.github.io.git/</id>
-  <author>
-    <name><![CDATA[]]></name>
-    <email><![CDATA[raffaellobertini@gmail.com]]></email>
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Symfony2 integrate FOSUserBundle, SonataAdminBundle, SonataUserBundle - Raffaello Bertini Blog</title>
+  <meta name="author" content="">
 
   
-  <entry>
-    <title type="html"><![CDATA[Setting up developing environment with Vagrant and PUPHPet]]></title>
-    <link href="https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/28/setting-up-developing-environment-with-vagrant-and-puphpet/"/>
-    <updated>2015-01-28T21:07:48+00:00</updated>
-    <id>https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/28/setting-up-developing-environment-with-vagrant-and-puphpet</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
+  <meta name="description" content="Install symfony2 and the dependencies This symfony2 project require some 3rd parties bundles that can be easily
+installed using composer require [ &hellip;">
   
-  <entry>
-    <title type="html"><![CDATA[Symfony2 integrate FOSUserBundle, SonataAdminBundle, SonataUserBundle]]></title>
-    <link href="https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/25/symfony2-integrate-fosuserbundle-and-sonataadmin/"/>
-    <updated>2015-01-25T01:27:35+00:00</updated>
-    <id>https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/25/symfony2-integrate-fosuserbundle-and-sonataadmin</id>
-    <content type="html"><![CDATA[<h2>Install symfony2 and the dependencies</h2>
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/25/symfony2-integrate-fosuserbundle-and-sonataadmin/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Raffaello Bertini Blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-51343110-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Raffaello Bertini Blog</a></h1>
+  
+    <h2>Articles about IT stuff and more!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:github.com/Raffaello/Raffaello.github.io.git" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Symfony2 Integrate FOSUserBundle, SonataAdminBundle, SonataUserBundle</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-01-25T01:27:35+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Install symfony2 and the dependencies</h2>
 
 <p>This symfony2 project require some 3rd parties bundles that can be easily
 installed using <code>composer require [package ... ]</code>.
@@ -2311,144 +2387,179 @@ required for authentication.</p>
 
 <p>You can see the repository here:
 <a href="https://github.com/Raffaello/symfony2-example.git">https://github.com/Raffaello/symfony2-example.git</a></p>
-]]></content>
-  </entry>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-  <entry>
-    <title type="html"><![CDATA[setting up Octopress for github pages]]></title>
-    <link href="https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/23/setting-up-octopress-for-github-pages/"/>
-    <updated>2015-01-23T12:16:22+00:00</updated>
-    <id>https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/23/setting-up-octopress-for-github-pages</id>
-    <content type="html"><![CDATA[<h2>Prerequisites</h2>
-
-<p>Install:</p>
-
-<ul>
-<li>git</li>
-<li>ruby >= 1.9</li>
-<li>clone octopress repo</li>
-<li>in some system is required <code>ruby-devel</code></li>
-<li>rake</li>
-</ul>
 
 
-<p>further info here:
-<a href="http://octopress.org/docs/setup/">http://octopress.org/docs/setup/</a></p>
 
-<h2>Setup</h2>
-
-<p>Now it is required to execute the following commands
-inside the <code>octopress</code> folder:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>gem install bundler
-</span></code></pre></td></tr></table></div></figure>
+      
 
 
-<p>After the operation completed, in some system is required to add a gem
-in the &lsquo;Gemfile&rsquo; so edit  it appending a dependency:</p>
-
-<ul>
-<li><code>gem 'json'</code></li>
-</ul>
 
 
-<p>and it looks like:</p>
-
-<figure class='code'><figcaption><span>Gemfile </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">source</span> <span class="s2">&quot;https://rubygems.org&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;rake&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 10.0&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;jekyll&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 2.0&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;octopress-hooks&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 2.2&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;octopress-date-format&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 2.0&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;jekyll-sitemap&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;rdiscount&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 2.0&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;RedCloth&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 4.2.9&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;haml&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 4.0&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;compass&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 1.0.1&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;sass-globbing&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 1.0.0&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;rubypants&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 0.2.0&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;rb-fsevent&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 0.9&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;stringex&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 1.4.0&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;json&#39;</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;sinatra&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 1.4.2&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Now we can finish the setup with:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>bundle install
-</span></code></pre></td></tr></table></div></figure>
 
 
-<p>and finish with installing the default theme:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>rake install
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>GitHub Page</h2>
-
-<p>Execute the following command and it will ask you for
-your repository URI:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>rake setup_github_pages
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>After that run:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>rake generate
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Deploy</h2>
-
-<p>Simply run:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>rake deploy
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Pre Deploy operation</h3>
-
-<p>It can be required to do a pull operation in the <code>_deploy</code> folder,
-if it is the case, because the deploy has failed, inside the <code>_deploy</code> folder run:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>git pull origin master
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
   
-</feed>
+
+
+<time datetime="2015-01-25T01:27:35+00:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/symfony2/'>symfony2</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/25/symfony2-integrate-fosuserbundle-and-sonataadmin/" data-via="raffaello81" data-counturl="https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/25/symfony2-integrate-fosuserbundle-and-sonataadmin/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/01/23/setting-up-octopress-for-github-pages/" title="Previous Post: setting up Octopress for github pages">&laquo; setting up Octopress for github pages</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2015/01/28/setting-up-developing-environment-with-vagrant-and-puphpet/" title="Next Post: Setting up developing environment with Vagrant and PUPHPet">Setting up developing environment with Vagrant and PUPHPet &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/01/28/setting-up-developing-environment-with-vagrant-and-puphpet/">Setting up developing environment with Vagrant and PUPHPet</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/25/symfony2-integrate-fosuserbundle-and-sonataadmin/">Symfony2 integrate FOSUserBundle, SonataAdminBundle, SonataUserBundle</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/23/setting-up-octopress-for-github-pages/">setting up Octopress for github pages</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/Raffaello">@Raffaello</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'Raffaello',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/+RaffaelloBertini?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 -  -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a>. Background image by <a href="http://www.flickr.com/photos/89433098@N04/">Florian Kraft Fotografie</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
