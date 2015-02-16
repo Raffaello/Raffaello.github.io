@@ -4,7 +4,7 @@
   <title><![CDATA[Category: symfony2 | Raffaello Bertini Blog]]></title>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/blog/categories/symfony2/atom.xml" rel="self"/>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/"/>
-  <updated>2015-02-16T19:53:43+00:00</updated>
+  <updated>2015-02-16T19:56:23+00:00</updated>
   <id>https://github.com/Raffaello/Raffaello.github.io.git/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Symfony2 customize SonataUserBundle]]></title>
+    <link href="https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/28/symfony2-customize-sonatauserbundle/"/>
+    <updated>2015-01-28T22:29:24+00:00</updated>
+    <id>https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/28/symfony2-customize-sonatauserbundle</id>
+    <content type="html"><![CDATA[<h2>For the first part see:</h2>
+
+<p><a href="http://raffaello.github.io/blog/2015/01/25/symfony2-integrate-fosuserbundle-and-sonataadmin/">http://raffaello.github.io/blog/2015/01/25/symfony2-integrate-fosuserbundle-and-sonataadmin/</a></p>
+
+<h2>Customizing</h2>
+
+<p>[to write&hellip;]</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Symfony2 integrate FOSUserBundle, SonataAdminBundle, SonataUserBundle]]></title>
@@ -204,18 +219,18 @@ It use doctrine ORM for mapping entities, check on-line documentations for other
 </span><span class='line'>  <span class="l-Scalar-Plain">registration</span><span class="p-Indicator">:</span>
 </span><span class='line'>    <span class="l-Scalar-Plain">confirmation</span><span class="p-Indicator">:</span>
 </span><span class='line'>      <span class="l-Scalar-Plain">from_email</span><span class="p-Indicator">:</span>
-</span><span class='line'>        <span class="l-Scalar-Plain">address</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">&lt;a href=&quot;&amp;#x6d;&amp;#97;&amp;#105;&amp;#108;&amp;#116;&amp;#111;&amp;#58;&amp;#x72;&amp;#101;&amp;#x67;&amp;#105;&amp;#115;&amp;#116;&amp;#114;&amp;#x61;&amp;#116;&amp;#x69;&amp;#111;&amp;#x6e;&amp;#64;&amp;#x55;&amp;#115;&amp;#x65;&amp;#x72;&amp;#x42;&amp;#117;&amp;#110;&amp;#x64;&amp;#108;&amp;#101;&amp;#x2e;&amp;#x6f;&amp;#114;&amp;#103;&quot;&gt;&amp;#114;&amp;#101;&amp;#103;&amp;#105;&amp;#115;&amp;#116;&amp;#x72;&amp;#97;&amp;#x74;&amp;#x69;&amp;#111;&amp;#110;&amp;#x40;&amp;#85;&amp;#115;&amp;#x65;&amp;#114;&amp;#x42;&amp;#x75;&amp;#x6e;&amp;#x64;&amp;#x6c;&amp;#x65;&amp;#x2e;&amp;#111;&amp;#x72;&amp;#x67;&lt;/a&gt;</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">address</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">&lt;a href=&quot;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#116;&amp;#x6f;&amp;#58;&amp;#x72;&amp;#x65;&amp;#x67;&amp;#105;&amp;#x73;&amp;#116;&amp;#x72;&amp;#x61;&amp;#116;&amp;#105;&amp;#x6f;&amp;#x6e;&amp;#x40;&amp;#x55;&amp;#115;&amp;#x65;&amp;#x72;&amp;#66;&amp;#x75;&amp;#110;&amp;#x64;&amp;#108;&amp;#101;&amp;#x2e;&amp;#x6f;&amp;#114;&amp;#103;&quot;&gt;&amp;#114;&amp;#x65;&amp;#103;&amp;#105;&amp;#115;&amp;#x74;&amp;#x72;&amp;#97;&amp;#116;&amp;#x69;&amp;#x6f;&amp;#110;&amp;#64;&amp;#x55;&amp;#x73;&amp;#x65;&amp;#114;&amp;#66;&amp;#117;&amp;#110;&amp;#100;&amp;#108;&amp;#x65;&amp;#46;&amp;#x6f;&amp;#x72;&amp;#103;&lt;/a&gt;</span>
 </span><span class='line'>        <span class="l-Scalar-Plain">sender_name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">User Bundle registration</span>
 </span><span class='line'>      <span class="c1">#enabled: true</span>
 </span><span class='line'>  <span class="l-Scalar-Plain">resetting</span><span class="p-Indicator">:</span>
 </span><span class='line'>    <span class="l-Scalar-Plain">email</span><span class="p-Indicator">:</span>
 </span><span class='line'>      <span class="l-Scalar-Plain">from_email</span><span class="p-Indicator">:</span>
-</span><span class='line'>        <span class="l-Scalar-Plain">address</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">&lt;a href=&quot;&amp;#x6d;&amp;#x61;&amp;#x69;&amp;#x6c;&amp;#x74;&amp;#111;&amp;#x3a;&amp;#x72;&amp;#101;&amp;#115;&amp;#101;&amp;#116;&amp;#x74;&amp;#105;&amp;#110;&amp;#x67;&amp;#x40;&amp;#85;&amp;#115;&amp;#101;&amp;#114;&amp;#x42;&amp;#117;&amp;#110;&amp;#100;&amp;#x6c;&amp;#x65;&amp;#x2e;&amp;#x6f;&amp;#x72;&amp;#103;&quot;&gt;&amp;#114;&amp;#101;&amp;#115;&amp;#101;&amp;#x74;&amp;#116;&amp;#x69;&amp;#110;&amp;#103;&amp;#x40;&amp;#85;&amp;#115;&amp;#101;&amp;#114;&amp;#66;&amp;#117;&amp;#110;&amp;#x64;&amp;#108;&amp;#101;&amp;#x2e;&amp;#x6f;&amp;#114;&amp;#x67;&lt;/a&gt;</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">address</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">&lt;a href=&quot;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#116;&amp;#111;&amp;#x3a;&amp;#114;&amp;#101;&amp;#x73;&amp;#x65;&amp;#x74;&amp;#x74;&amp;#x69;&amp;#110;&amp;#x67;&amp;#x40;&amp;#85;&amp;#115;&amp;#101;&amp;#114;&amp;#x42;&amp;#117;&amp;#110;&amp;#x64;&amp;#x6c;&amp;#101;&amp;#x2e;&amp;#111;&amp;#x72;&amp;#x67;&quot;&gt;&amp;#x72;&amp;#101;&amp;#115;&amp;#x65;&amp;#116;&amp;#116;&amp;#105;&amp;#x6e;&amp;#x67;&amp;#x40;&amp;#85;&amp;#115;&amp;#x65;&amp;#x72;&amp;#66;&amp;#117;&amp;#110;&amp;#100;&amp;#x6c;&amp;#x65;&amp;#x2e;&amp;#111;&amp;#x72;&amp;#x67;&lt;/a&gt;</span>
 </span><span class='line'>        <span class="l-Scalar-Plain">sender_name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">User Bundle resetting</span>
 </span><span class='line'>      <span class="l-Scalar-Plain">template</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ApplicationSonataUserBundle:User:resetting.email.twig&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;  from_email</span><span class="p-Indicator">:</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">address</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">&lt;a href=&quot;&amp;#109;&amp;#x61;&amp;#x69;&amp;#x6c;&amp;#116;&amp;#111;&amp;#58;&amp;#x6e;&amp;#111;&amp;#114;&amp;#x65;&amp;#x70;&amp;#108;&amp;#121;&amp;#x40;&amp;#85;&amp;#115;&amp;#x65;&amp;#114;&amp;#66;&amp;#117;&amp;#110;&amp;#100;&amp;#108;&amp;#x65;&amp;#46;&amp;#111;&amp;#x72;&amp;#103;&quot;&gt;&amp;#x6e;&amp;#111;&amp;#114;&amp;#101;&amp;#x70;&amp;#x6c;&amp;#x79;&amp;#x40;&amp;#x55;&amp;#115;&amp;#x65;&amp;#x72;&amp;#x42;&amp;#117;&amp;#x6e;&amp;#x64;&amp;#x6c;&amp;#x65;&amp;#x2e;&amp;#x6f;&amp;#x72;&amp;#103;&lt;/a&gt;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">address</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">&lt;a href=&quot;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#108;&amp;#x74;&amp;#x6f;&amp;#x3a;&amp;#110;&amp;#x6f;&amp;#114;&amp;#x65;&amp;#x70;&amp;#108;&amp;#121;&amp;#64;&amp;#x55;&amp;#x73;&amp;#x65;&amp;#x72;&amp;#66;&amp;#117;&amp;#110;&amp;#x64;&amp;#x6c;&amp;#101;&amp;#46;&amp;#111;&amp;#x72;&amp;#103;&quot;&gt;&amp;#x6e;&amp;#x6f;&amp;#x72;&amp;#101;&amp;#112;&amp;#x6c;&amp;#x79;&amp;#x40;&amp;#85;&amp;#x73;&amp;#101;&amp;#114;&amp;#x42;&amp;#117;&amp;#x6e;&amp;#x64;&amp;#108;&amp;#101;&amp;#46;&amp;#x6f;&amp;#114;&amp;#x67;&lt;/a&gt;</span>
 </span><span class='line'>    <span class="l-Scalar-Plain">sender_name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">User Bundle&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;  group</span><span class="p-Indicator">:</span>

@@ -4,7 +4,7 @@
   <title><![CDATA[Raffaello Bertini Blog]]></title>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/atom.xml" rel="self"/>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/"/>
-  <updated>2015-02-16T19:53:43+00:00</updated>
+  <updated>2015-02-16T19:56:23+00:00</updated>
   <id>https://github.com/Raffaello/Raffaello.github.io.git/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Symfony2 customize SonataUserBundle]]></title>
+    <link href="https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/28/symfony2-customize-sonatauserbundle/"/>
+    <updated>2015-01-28T22:29:24+00:00</updated>
+    <id>https://github.com/Raffaello/Raffaello.github.io.git/blog/2015/01/28/symfony2-customize-sonatauserbundle</id>
+    <content type="html"><![CDATA[<h2>For the first part see:</h2>
+
+<p><a href="http://raffaello.github.io/blog/2015/01/25/symfony2-integrate-fosuserbundle-and-sonataadmin/">http://raffaello.github.io/blog/2015/01/25/symfony2-integrate-fosuserbundle-and-sonataadmin/</a></p>
+
+<h2>Customizing</h2>
+
+<p>[to write&hellip;]</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Symfony2 integrate FOSUserBundle, SonataAdminBundle, SonataUserBundle]]></title>
