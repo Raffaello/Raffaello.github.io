@@ -4,7 +4,7 @@
   <title><![CDATA[Category: sonataadminbundle | Raffaello Bertini Blog]]></title>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/blog/categories/sonataadminbundle/atom.xml" rel="self"/>
   <link href="https://github.com/Raffaello/Raffaello.github.io.git/"/>
-  <updated>2015-01-28T23:05:26+00:00</updated>
+  <updated>2015-02-16T19:52:52+00:00</updated>
   <id>https://github.com/Raffaello/Raffaello.github.io.git/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -103,23 +103,14 @@ It use doctrine ORM for mapping entities, check on-line documentations for other
 </ul>
 
 
-<h2>Creating the Bundles</h2>
+<h2>Creating the Admin Blog Bundle</h2>
 
-<p>It is required for this tutorial to create a bundle for the Users named UserBundle
-in the Acme namespace.</p>
-
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>php app/console generate:Bundle <span class="p">&amp;</span>ndash<span class="p">;</span><span class="nv">namespacce</span><span class="o">=</span>Acme/UserBundle <span class="p">&amp;</span>ndash<span class="p">;</span><span class="nv">dir</span><span class="o">=</span>src <span class="p">&amp;</span>ndash<span class="p">;</span>bundle-name<span class="o">=</span>UserBundle
-</span></code></pre></td></tr></table></div></figure></p>
-
-<h3>Optional</h3>
-
-<p>Create a 2nd bundle for the blog&rsquo;s post in the Admin dashboard.
+<p>Create a bundle for the blog&rsquo;s post in the Admin dashboard.
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>php app/console generate:Bundle <span class="p">&amp;</span>ndash<span class="p">;</span><span class="nv">namespacce</span><span class="o">=</span>Acme/BlogAdminBundle <span class="p">&amp;</span>ndash<span class="p">;</span><span class="nv">dir</span><span class="o">=</span>src <span class="p">&amp;</span>ndash<span class="p">;</span>bundle-name<span class="o">=</span>BlogAdminBundle
 </span></code></pre></td></tr></table></div></figure></p>
 
-<h2>Enabling the bundles</h2>
+<h2>Enabling the bundle</h2>
 
 <p>After composer has finished its task, it is required to enable the bundles in
 &lsquo;app/AppKernel.php&rsquo; :</p>
@@ -135,10 +126,8 @@ in the Acme namespace.</p>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-<span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="k">new</span> <span class="nx">\Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle</span><span class="p">(),</span>
 </span><span class='line'><span class="k">new</span> <span class="nx">\FOS\UserBundle\FOSUserBundle</span><span class="p">(),</span>
-</span><span class='line'><span class="k">new</span> <span class="nx">Acme\UserBundle\AcmeUserBundle</span><span class="p">(),</span>
 </span><span class='line'><span class="k">new</span> <span class="nx">Sonata\CoreBundle\SonataCoreBundle</span><span class="p">(),</span>
 </span><span class='line'><span class="k">new</span> <span class="nx">Sonata\BlockBundle\SonataBlockBundle</span><span class="p">(),</span>
 </span><span class='line'><span class="k">new</span> <span class="nx">Knp\Bundle\MenuBundle\KnpMenuBundle</span><span class="p">(),</span>
@@ -148,6 +137,17 @@ in the Acme namespace.</p>
 </span><span class='line'><span class="k">new</span> <span class="nx">Acme\BlogAdminBundle\AcmeBlogAdminBundle</span><span class="p">(),</span>
 </span><span class='line'><span class="k">new</span> <span class="nx">Sonata\EasyExtendsBundle\SonataEasyExtendsBundle</span><span class="p">()</span>
 </span></code></pre></td></tr></table></div></figure></p>
+
+<h3>Extending Sonata User Bundle</h3>
+
+<p>Now we extend the <code>SonataUserBundle</code> to easily customize it using <code>Sonata:easy-extends</code> command</p>
+
+<p><figure class='code'><figcaption><span>% </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>php app/console sonata:easy-extends:generate SonataUserBundle <span class="p">&amp;</span>ndash<span class="p">;</span><span class="nv">dest</span><span class="o">=</span>src
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>The bundle will be in the <code>Application/Sonata</code> namespace.</p>
 
 <h2>configure FOS/UserBundle</h2>
 
@@ -195,30 +195,28 @@ in the Acme namespace.</p>
 <span class='line-number'>31</span>
 <span class='line-number'>32</span>
 <span class='line-number'>33</span>
-<span class='line-number'>34</span>
 </pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">fos_user</span><span class="p-Indicator">:</span>
 </span><span class='line'>  <span class="l-Scalar-Plain">db_driver</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">orm</span>
 </span><span class='line'>  <span class="l-Scalar-Plain">firewall_name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">main</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">user_class</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Acme\UserBundle\Entity\User</span>
-</span><span class='line'>  <span class="c1">#user_class:     Application\Sonata\UserBundle\Entity\User</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">user_class</span><span class="p-Indicator">:</span>     <span class="l-Scalar-Plain">Application\Sonata\UserBundle\Entity\User</span>
 </span><span class='line'>  <span class="l-Scalar-Plain">service</span><span class="p-Indicator">:</span>
 </span><span class='line'>    <span class="l-Scalar-Plain">mailer</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">fos_user.mailer.twig_swift</span>
 </span><span class='line'>  <span class="l-Scalar-Plain">registration</span><span class="p-Indicator">:</span>
 </span><span class='line'>    <span class="l-Scalar-Plain">confirmation</span><span class="p-Indicator">:</span>
 </span><span class='line'>      <span class="l-Scalar-Plain">from_email</span><span class="p-Indicator">:</span>
-</span><span class='line'>        <span class="l-Scalar-Plain">address</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">&lt;a href=&quot;&amp;#109;&amp;#x61;&amp;#105;&amp;#x6c;&amp;#116;&amp;#x6f;&amp;#58;&amp;#114;&amp;#x65;&amp;#103;&amp;#x69;&amp;#x73;&amp;#x74;&amp;#114;&amp;#x61;&amp;#x74;&amp;#x69;&amp;#x6f;&amp;#110;&amp;#64;&amp;#85;&amp;#x73;&amp;#101;&amp;#114;&amp;#x42;&amp;#117;&amp;#x6e;&amp;#x64;&amp;#108;&amp;#x65;&amp;#x2e;&amp;#111;&amp;#114;&amp;#x67;&quot;&gt;&amp;#x72;&amp;#x65;&amp;#103;&amp;#105;&amp;#x73;&amp;#x74;&amp;#114;&amp;#x61;&amp;#116;&amp;#x69;&amp;#x6f;&amp;#x6e;&amp;#x40;&amp;#85;&amp;#115;&amp;#x65;&amp;#x72;&amp;#66;&amp;#117;&amp;#x6e;&amp;#100;&amp;#108;&amp;#x65;&amp;#x2e;&amp;#x6f;&amp;#114;&amp;#103;&lt;/a&gt;</span>
-</span><span class='line'>        <span class="l-Scalar-Plain">sender_name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Acme User Bundle registration</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">address</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">&lt;a href=&quot;&amp;#109;&amp;#x61;&amp;#105;&amp;#x6c;&amp;#116;&amp;#x6f;&amp;#58;&amp;#114;&amp;#101;&amp;#x67;&amp;#105;&amp;#x73;&amp;#x74;&amp;#x72;&amp;#x61;&amp;#x74;&amp;#x69;&amp;#111;&amp;#x6e;&amp;#x40;&amp;#85;&amp;#x73;&amp;#101;&amp;#114;&amp;#66;&amp;#x75;&amp;#110;&amp;#100;&amp;#108;&amp;#101;&amp;#46;&amp;#111;&amp;#x72;&amp;#103;&quot;&gt;&amp;#x72;&amp;#101;&amp;#x67;&amp;#x69;&amp;#115;&amp;#x74;&amp;#114;&amp;#x61;&amp;#116;&amp;#x69;&amp;#111;&amp;#110;&amp;#x40;&amp;#x55;&amp;#115;&amp;#101;&amp;#114;&amp;#66;&amp;#117;&amp;#110;&amp;#x64;&amp;#108;&amp;#101;&amp;#x2e;&amp;#x6f;&amp;#114;&amp;#x67;&lt;/a&gt;</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">sender_name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">User Bundle registration</span>
 </span><span class='line'>      <span class="c1">#enabled: true</span>
 </span><span class='line'>  <span class="l-Scalar-Plain">resetting</span><span class="p-Indicator">:</span>
 </span><span class='line'>    <span class="l-Scalar-Plain">email</span><span class="p-Indicator">:</span>
 </span><span class='line'>      <span class="l-Scalar-Plain">from_email</span><span class="p-Indicator">:</span>
-</span><span class='line'>        <span class="l-Scalar-Plain">address</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">&lt;a href=&quot;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#108;&amp;#116;&amp;#111;&amp;#x3a;&amp;#114;&amp;#x65;&amp;#115;&amp;#101;&amp;#116;&amp;#x74;&amp;#105;&amp;#x6e;&amp;#103;&amp;#x40;&amp;#85;&amp;#x73;&amp;#101;&amp;#x72;&amp;#x42;&amp;#x75;&amp;#110;&amp;#100;&amp;#x6c;&amp;#x65;&amp;#x2e;&amp;#111;&amp;#x72;&amp;#103;&quot;&gt;&amp;#x72;&amp;#101;&amp;#x73;&amp;#101;&amp;#116;&amp;#x74;&amp;#x69;&amp;#110;&amp;#103;&amp;#x40;&amp;#85;&amp;#x73;&amp;#101;&amp;#114;&amp;#66;&amp;#x75;&amp;#x6e;&amp;#100;&amp;#108;&amp;#101;&amp;#x2e;&amp;#x6f;&amp;#x72;&amp;#x67;&lt;/a&gt;</span>
-</span><span class='line'>        <span class="l-Scalar-Plain">sender_name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Acme User Bundle resetting</span>
-</span><span class='line'>      <span class="l-Scalar-Plain">template</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">AcmeUserBundle:User:resetting.email.twig&lt;/p&gt;</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">address</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">&lt;a href=&quot;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#x74;&amp;#x6f;&amp;#58;&amp;#x72;&amp;#x65;&amp;#115;&amp;#x65;&amp;#116;&amp;#116;&amp;#x69;&amp;#x6e;&amp;#103;&amp;#64;&amp;#85;&amp;#115;&amp;#101;&amp;#x72;&amp;#x42;&amp;#117;&amp;#x6e;&amp;#100;&amp;#x6c;&amp;#x65;&amp;#x2e;&amp;#111;&amp;#x72;&amp;#x67;&quot;&gt;&amp;#x72;&amp;#x65;&amp;#115;&amp;#101;&amp;#x74;&amp;#x74;&amp;#105;&amp;#110;&amp;#103;&amp;#64;&amp;#x55;&amp;#x73;&amp;#x65;&amp;#114;&amp;#66;&amp;#x75;&amp;#110;&amp;#100;&amp;#108;&amp;#x65;&amp;#x2e;&amp;#x6f;&amp;#x72;&amp;#x67;&lt;/a&gt;</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">sender_name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">User Bundle resetting</span>
+</span><span class='line'>      <span class="l-Scalar-Plain">template</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ApplicationSonataUserBundle:User:resetting.email.twig&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;  from_email</span><span class="p-Indicator">:</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">address</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">&lt;a href=&quot;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#116;&amp;#111;&amp;#x3a;&amp;#110;&amp;#111;&amp;#114;&amp;#101;&amp;#112;&amp;#x6c;&amp;#x79;&amp;#64;&amp;#x55;&amp;#115;&amp;#x65;&amp;#114;&amp;#x42;&amp;#x75;&amp;#x6e;&amp;#100;&amp;#x6c;&amp;#x65;&amp;#46;&amp;#x6f;&amp;#x72;&amp;#x67;&quot;&gt;&amp;#110;&amp;#111;&amp;#x72;&amp;#101;&amp;#x70;&amp;#108;&amp;#121;&amp;#64;&amp;#x55;&amp;#115;&amp;#101;&amp;#x72;&amp;#66;&amp;#x75;&amp;#110;&amp;#x64;&amp;#x6c;&amp;#x65;&amp;#46;&amp;#111;&amp;#114;&amp;#x67;&lt;/a&gt;</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">sender_name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Acme User Bundle&lt;/p&gt;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">address</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">&lt;a href=&quot;&amp;#x6d;&amp;#97;&amp;#105;&amp;#108;&amp;#116;&amp;#111;&amp;#x3a;&amp;#x6e;&amp;#x6f;&amp;#x72;&amp;#x65;&amp;#112;&amp;#108;&amp;#121;&amp;#64;&amp;#x55;&amp;#115;&amp;#101;&amp;#114;&amp;#x42;&amp;#117;&amp;#110;&amp;#x64;&amp;#x6c;&amp;#101;&amp;#x2e;&amp;#111;&amp;#114;&amp;#103;&quot;&gt;&amp;#x6e;&amp;#x6f;&amp;#x72;&amp;#101;&amp;#x70;&amp;#x6c;&amp;#121;&amp;#x40;&amp;#x55;&amp;#115;&amp;#x65;&amp;#114;&amp;#x42;&amp;#x75;&amp;#x6e;&amp;#x64;&amp;#108;&amp;#101;&amp;#46;&amp;#111;&amp;#114;&amp;#x67;&lt;/a&gt;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">sender_name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">User Bundle&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;  group</span><span class="p-Indicator">:</span>
 </span><span class='line'>    <span class="l-Scalar-Plain">group_class</span><span class="p-Indicator">:</span>   <span class="l-Scalar-Plain">Application\Sonata\UserBundle\Entity\Group</span>
@@ -232,115 +230,9 @@ in the Acme namespace.</p>
 </span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;</span>
 </span></code></pre></td></tr></table></div></figure></p>
 
-<p>we have to create the entity <code>User</code>:
-create the file <code>User.php</code> inside inside the path <code>src/Acme/UserBundle/Entity/</code> (<em>the path may vary</em>).</p>
-
-<p>create the <code>Entity</code> directory if is not present just to maintain a well structured code.</p>
-
-<p>The path is relative to the <code>UserBundle</code> (<em>may it can be <code>AcmeUserBundle</code></em>).</p>
-
-<p><figure class='code'><figcaption><span>User.php </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">?</span><span class="nx">php</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">namespace</span> <span class="nx">Acme\UserBundle\Entity</span><span class="p">;</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;//</span><span class="k">use</span> <span class="nx">FOS\UserBundle\Entity\User</span> <span class="k">as</span> <span class="nx">BaseUser</span><span class="p">;</span>
-</span><span class='line'><span class="k">use</span> <span class="nx">Doctrine\ORM\Mapping</span> <span class="k">as</span> <span class="nx">ORM</span><span class="p">;</span>
-</span><span class='line'><span class="k">use</span> <span class="nx">Sonata\UserBundle\Entity\BaseUser</span><span class="p">;</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;/&lt;</span><span class="nx">strong</span><span class="o">&gt;</span>
-</span><span class='line'><span class="o">*</span> <span class="o">@</span><span class="nx">ORM\Entity</span>
-</span><span class='line'><span class="o">*</span> <span class="o">@</span><span class="nx">ORM\Table</span><span class="p">(</span><span class="nx">name</span><span class="o">=&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">fos_user</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;)</span>
-</span><span class='line'><span class="o">*/</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">BaseUser</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="o">/&lt;/</span><span class="nx">strong</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">*</span> <span class="o">@</span><span class="nx">ORM\Id</span>
-</span><span class='line'>  <span class="o">*</span> <span class="o">@</span><span class="nx">ORM\Column</span><span class="p">(</span><span class="nx">type</span><span class="o">=&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">integer</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;)</span>
-</span><span class='line'>  <span class="o">*</span> <span class="o">@</span><span class="nx">ORM\GeneratedValue</span><span class="p">(</span><span class="nx">strategy</span><span class="o">=&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">AUTO</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;)</span>
-</span><span class='line'>  <span class="o">*/</span>
-</span><span class='line'>  <span class="k">protected</span> <span class="nv">$id</span><span class="p">;</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="k">public</span> <span class="k">function</span> <span class="err">&lt;</span><span class="nf">strong</span><span class="o">&gt;</span><span class="nx">construct</span><span class="p">()</span>
-</span><span class='line'>  <span class="p">{</span>
-</span><span class='line'>    <span class="k">parent</span><span class="o">::&lt;/</span><span class="nx">strong</span><span class="o">&gt;</span><span class="nx">construct</span><span class="p">();</span>
-</span><span class='line'>    <span class="c1">// your own logic</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<h2>configure sonata/admin bundle</h2>
-
-<ul>
-<li>follow the wiki here:
-<a href="http://sonata-project.org/bundles/admin/2-3/doc/reference/installation.html">http://sonata-project.org/bundles/admin/2-3/doc/reference/installation.html</a></li>
-</ul>
-
-
-<h3>configure sonata/block</h3>
-
-<p>Every service used by the sonata&rsquo;s bundle is required
-to be explicited in the <code>sonata_block</code> configuration.</p>
-
-<p>The config looks like:</p>
-
-<p><figure class='code'><figcaption><span>app/config/config.yml </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">sonata_block</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">default_context</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">cms</span><span class="p-Indicator">]</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">blocks</span><span class="p-Indicator">:</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">sonata.admin.block.admin_list</span><span class="p-Indicator">:</span>
-</span><span class='line'>      <span class="l-Scalar-Plain">context</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">admin</span><span class="p-Indicator">]</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">sonata.block.service.text</span><span class="p-Indicator">:</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">sonata.block.service.rss</span><span class="p-Indicator">:</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">sonata.user.block.menu</span><span class="p-Indicator">:</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">sonata.user.block.account</span><span class="p-Indicator">:</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">sonata.news.block.recent_post:&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
 <h3>configure sonata/admin</h3>
 
-<p>After thar, configure the &lsquo;sonata_admin&rsquo; bundle
+<p>After that, configure the &lsquo;sonata_admin&rsquo; bundle
 like this:</p>
 
 <p><figure class='code'><figcaption><span>app/config/config.yml </span></figcaption>
@@ -370,7 +262,7 @@ like this:</p>
 <span class='line-number'>24</span>
 </pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">sonata_admin</span><span class="p-Indicator">:</span>
 </span><span class='line'>  <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Administration</span>
-</span><span class='line'>  <span class="c1">#title_logo: bundles/acmeuser/images/logo.png</span>
+</span><span class='line'>  <span class="c1">#title_logo: bundles/images/logo.png</span>
 </span><span class='line'>  <span class="l-Scalar-Plain">dashboard</span><span class="p-Indicator">:</span>
 </span><span class='line'>    <span class="l-Scalar-Plain">blocks</span><span class="p-Indicator">:</span>
 </span><span class='line'>      <span class="p-Indicator">-</span>
@@ -396,16 +288,14 @@ like this:</p>
 
 <h3>creating Admin class</h3>
 
-<p>In the &lsquo;UserBundle&rsquo; create a folder call <code>Admin</code>.
-Create two files called respectively:</p>
+<p>In the <code>AdminBlogBundle</code> create a file called:</p>
 
 <ul>
 <li><code>PostAdmin.php</code></li>
-<li><code>UserAdmin.php</code></li>
 </ul>
 
 
-<p>and paste the following code:</p>
+<p>After that, paste the following code:</p>
 
 <p><figure class='code'><figcaption><span>PostAdmin.php </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -452,7 +342,7 @@ Create two files called respectively:</p>
 <span class='line-number'>42</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">?</span><span class="nx">php</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">namespace</span> <span class="nx">Acme\UserBundle\Admin</span><span class="p">;</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">namespace</span> <span class="nx">Acme\AdminBlogBundle\Admin</span><span class="p">;</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">use</span> <span class="nx">Sonata\AdminBundle\Admin\Admin</span><span class="p">;</span>
 </span><span class='line'><span class="k">use</span> <span class="nx">Sonata\AdminBundle\Datagrid\ListMapper</span><span class="p">;</span>
@@ -494,88 +384,9 @@ Create two files called respectively:</p>
 </span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
 </span></code></pre></td></tr></table></div></figure></p>
 
-<p><figure class='code'><figcaption><span>UserAdmin.php </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">?</span><span class="nx">php</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">namespace</span> <span class="nx">Acme\UserBundle\Admin</span><span class="p">;</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">use</span> <span class="nx">Sonata\AdminBundle\Admin\Admin</span><span class="p">;</span>
-</span><span class='line'><span class="k">use</span> <span class="nx">Sonata\AdminBundle\Datagrid\ListMapper</span><span class="p">;</span>
-</span><span class='line'><span class="k">use</span> <span class="nx">Sonata\AdminBundle\Datagrid\DatagridMapper</span><span class="p">;</span>
-</span><span class='line'><span class="k">use</span> <span class="nx">Sonata\AdminBundle\Form\FormMapper</span><span class="p">;</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">UserAdmin</span> <span class="k">extends</span> <span class="nx">Admin</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="c1">// Fields to be shown on create/edit forms</span>
-</span><span class='line'>  <span class="k">protected</span> <span class="k">function</span> <span class="nf">configureFormFields</span><span class="p">(</span><span class="nx">FormMapper</span> <span class="nv">$formMapper</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">{</span>
-</span><span class='line'>    <span class="nv">$formMapper</span>
-</span><span class='line'>    <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">username</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;)</span>
-</span><span class='line'>    <span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="c1">// Fields to be shown on filter forms</span>
-</span><span class='line'>  <span class="k">protected</span> <span class="k">function</span> <span class="nf">configureDatagridFilters</span><span class="p">(</span><span class="nx">DatagridMapper</span> <span class="nv">$datagridMapper</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">{</span>
-</span><span class='line'>    <span class="nv">$datagridMapper</span>
-</span><span class='line'>    <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">username</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;)</span>
-</span><span class='line'>    <span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="c1">// Fields to be shown on lists</span>
-</span><span class='line'>  <span class="k">protected</span> <span class="k">function</span> <span class="nf">configureListFields</span><span class="p">(</span><span class="nx">ListMapper</span> <span class="nv">$listMapper</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">{</span>
-</span><span class='line'>    <span class="nv">$listMapper</span>
-</span><span class='line'>    <span class="o">-&gt;</span><span class="na">addIdentifier</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">username</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;)</span>
-</span><span class='line'>    <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">email</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;)</span>
-</span><span class='line'>    <span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
 <h3>Configure Admin services</h3>
 
-<p>create the file <code>admin.yml</code> inside <code>UserBundle\Resources\config\admin.yml</code></p>
+<p>create the file <code>admin.yml</code> inside <code>AdminBlogBundle\Resources\config\admin.yml</code></p>
 
 <p><figure class='code'><figcaption><span>admin.yml </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -590,44 +401,18 @@ Create two files called respectively:</p>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
 </pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">services</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">sonata.admin.post</span><span class="p-Indicator">:</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">class</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Acme\UserBundle\Admin\PostAdmin</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">tags</span><span class="p-Indicator">:</span>
-</span><span class='line'>      <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">name</span><span class="p-Indicator">:</span> <span class="nv">sonata.admin</span><span class="p-Indicator">,</span> <span class="nv">manager_type</span><span class="p-Indicator">:</span> <span class="nv">orm</span><span class="p-Indicator">,</span> <span class="nv">group</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="nv">;Content&amp;rdquo;</span><span class="p-Indicator">,</span> <span class="nv">label</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="nv">;Post&amp;rdquo;</span> <span class="p-Indicator">}</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">arguments</span><span class="p-Indicator">:</span>
-</span><span class='line'>      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">~</span>
-</span><span class='line'>      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Acme\BlogBundle\Entity\Post</span>
-</span><span class='line'>      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">SonataAdminBundle:CRUD</span>
-</span><span class='line'>      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">~</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">calls</span><span class="p-Indicator">:</span>
-</span><span class='line'>      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span> <span class="nv">setLabelTranslatorStrategy</span><span class="p-Indicator">,</span> <span class="p-Indicator">[</span><span class="nl">&amp;ldquo</span><span class="nv">;@sonata.admin.label.strategy.underscore&amp;rdquo;</span><span class="p-Indicator">]]</span>
-</span><span class='line'>      <span class="c1">#- [ setTranslationDomain, [AcmeBlogBundle, AcmeUserBundle]]&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;  sonata.admin.user</span><span class="p-Indicator">:</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">class</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Acme\UserBundle\Admin\UserAdmin</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">tags</span><span class="p-Indicator">:</span>
-</span><span class='line'>      <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">name</span><span class="p-Indicator">:</span> <span class="nv">sonata.admin</span><span class="p-Indicator">,</span> <span class="nv">manager_type</span><span class="p-Indicator">:</span> <span class="nv">orm</span><span class="p-Indicator">,</span> <span class="nv">group</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="nv">;User&amp;rdquo;</span><span class="p-Indicator">,</span> <span class="nv">label</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="nv">;Username&amp;rdquo;</span> <span class="p-Indicator">}</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">arguments</span><span class="p-Indicator">:</span>
-</span><span class='line'>      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">~</span>
-</span><span class='line'>      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Acme\UserBundle\Entity\User</span>
-</span><span class='line'>      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">SonataAdminBundle:CRUD</span>
-</span><span class='line'>      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">~</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">calls</span><span class="p-Indicator">:</span>
-</span><span class='line'>      <span class="p-Indicator">-</span> <span class="p-Indicator">[</span> <span class="nv">setLabelTranslatorStrategy</span><span class="p-Indicator">,</span> <span class="p-Indicator">[</span><span class="nl">&amp;ldquo</span><span class="nv">;@sonata.admin.label.strategy.underscore&amp;rdquo;</span><span class="p-Indicator">]]</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">sonata.admin.post</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">class</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Acme\BlogBundle\Admin\PostAdmin</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">tags</span><span class="p-Indicator">:</span>
+</span><span class='line'>            <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">name</span><span class="p-Indicator">:</span> <span class="nv">sonata.admin</span><span class="p-Indicator">,</span> <span class="nv">manager_type</span><span class="p-Indicator">:</span> <span class="nv">orm</span><span class="p-Indicator">,</span> <span class="nv">group</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="nv">;Content&amp;rdquo;</span><span class="p-Indicator">,</span> <span class="nv">label</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="nv">;Post&amp;rdquo;</span> <span class="p-Indicator">}</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">arguments</span><span class="p-Indicator">:</span>
+</span><span class='line'>            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">~</span>
+</span><span class='line'>            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Acme\BlogBundle\Entity\Post</span>
+</span><span class='line'>            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">SonataAdminBundle:CRUD</span>
+</span><span class='line'>            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">~</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">calls</span><span class="p-Indicator">:</span>
+</span><span class='line'>            <span class="p-Indicator">-</span> <span class="p-Indicator">[</span> <span class="nv">setLabelTranslatorStrategy</span><span class="p-Indicator">,</span> <span class="p-Indicator">[</span><span class="nl">&amp;ldquo</span><span class="nv">;@sonata.admin.label.strategy.underscore&amp;rdquo;</span><span class="p-Indicator">]]</span>
 </span></code></pre></td></tr></table></div></figure></p>
 
 <h2>configure sonataUser</h2>
@@ -662,54 +447,51 @@ Create two files called respectively:</p>
 <span class='line-number'>22</span>
 <span class='line-number'>23</span>
 <span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
 </pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">imports</span><span class="p-Indicator">:</span>
 </span><span class='line'><span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">resource</span><span class="p-Indicator">:</span> <span class="nv">parameters.yml</span> <span class="p-Indicator">}</span>
 </span><span class='line'><span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">resource</span><span class="p-Indicator">:</span> <span class="nv">security.yml</span> <span class="p-Indicator">}</span>
-</span><span class='line'><span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">resource</span><span class="p-Indicator">:</span> <span class="err">@</span><span class="nv">AcmeUserBundle/Resources/config/admin.yml</span> <span class="p-Indicator">}</span><span class="l-Scalar-Plain">&lt;/p&gt;</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">resource</span><span class="p-Indicator">:</span> <span class="err">@</span><span class="nv">AcmeAdminBlogBundle/Resources/config/admin.yml</span> <span class="p-Indicator">}</span><span class="l-Scalar-Plain">&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;sonata_user</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">profile</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="c1"># Profile show page is a dashboard as in SonataAdminBundle</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">dashboard</span><span class="p-Indicator">:</span>
-</span><span class='line'>      <span class="l-Scalar-Plain">blocks</span><span class="p-Indicator">:</span>
-</span><span class='line'>        <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">position</span><span class="p-Indicator">:</span> <span class="nv">left</span><span class="p-Indicator">,</span> <span class="nv">type</span><span class="p-Indicator">:</span> <span class="nv">sonata.block.service.text</span><span class="p-Indicator">,</span> <span class="nv">settings</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">content</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="nv">;&lt;h2&gt;Welcome!&lt;/h2&gt; This is a sample user profile dashboard</span><span class="p-Indicator">,</span> <span class="nv">feel free to override it in the configuration! Want to make this text dynamic</span><span class="p-Indicator">?</span> <span class="nv">For instance display the user&amp;rsquo;s name</span><span class="p-Indicator">?</span> <span class="nv">Create a dedicated block and edit the configuration!&amp;rdquo;</span><span class="p-Indicator">}</span> <span class="p-Indicator">}</span>
-</span><span class='line'>        <span class="c1">#- { position: left, type: sonata.order.block.recent_orders, settings: { title: Recent Orders, number: 5, mode: public }}</span>
-</span><span class='line'>        <span class="c1">#- { position: right, type: sonata.timeline.block.timeline, settings: { max_per_page: 15 }}</span>
-</span><span class='line'>        <span class="c1">#- { position: right, type: sonata.news.block.recent_posts, settings: { title: Recent Posts, number: 5, mode: public }}</span>
-</span><span class='line'>        <span class="c1">#- { position: right, type: sonata.news.block.recent_comments, settings: { title: Recent Comments, number: 5, mode: public }}</span>
-</span><span class='line'>        <span class="c1"># Customize user portal menu by setting links</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">profile</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="c1"># Profile show page is a dashboard as in SonataAdminBundle</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">dashboard</span><span class="p-Indicator">:</span>
+</span><span class='line'>            <span class="l-Scalar-Plain">blocks</span><span class="p-Indicator">:</span>
+</span><span class='line'>                <span class="p-Indicator">-</span>
+</span><span class='line'>                    <span class="l-Scalar-Plain">position</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">left</span>
+</span><span class='line'>                    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">sonata.admin.block.admin_list</span>
+</span><span class='line'>                <span class="p-Indicator">-</span>
+</span><span class='line'>                    <span class="l-Scalar-Plain">position</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">right</span>
+</span><span class='line'>                    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">sonata.block.service.text</span>
+</span><span class='line'>                    <span class="l-Scalar-Plain">settings</span><span class="p-Indicator">:</span>
+</span><span class='line'>                        <span class="l-Scalar-Plain">content</span><span class="p-Indicator">:</span> <span class="p-Indicator">&gt;</span>
+</span><span class='line'>                            <span class="no">&lt;h2&gt;Welcome!&lt;/h2&gt;</span>
+</span><span class='line'>                            <span class="no">This is a sample user profile dashboard,</span>
+</span><span class='line'>                            <span class="no">feel free to override it in the configuration!</span>
+</span><span class='line'>                            <span class="no">Want to make this text dynamic?</span>
+</span><span class='line'>                            <span class="no">For instance display the user&amp;rsquo;s name?</span>
+</span><span class='line'>                            <span class="no">Create a dedicated block and edit the configuration!&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="l-Scalar-Plain">&lt;pre&gt;&lt;code&gt;</span>      <span class="c1"># Customize user portal menu by setting links</span>
 </span><span class='line'>    <span class="l-Scalar-Plain">menu</span><span class="p-Indicator">:</span>
-</span><span class='line'>      <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">route</span><span class="p-Indicator">:</span> <span class="nl">&amp;lsquo</span><span class="nv">;sonata_user_profile_show&amp;rsquo;</span><span class="p-Indicator">,</span> <span class="nv">label</span><span class="p-Indicator">:</span> <span class="nl">&amp;lsquo</span><span class="nv">;sonata_profile_title&amp;rsquo;</span><span class="p-Indicator">,</span> <span class="nv">domain</span><span class="p-Indicator">:</span> <span class="nl">&amp;lsquo</span><span class="nv">;SonataUserBundle&amp;rsquo;</span><span class="p-Indicator">}</span>
-</span><span class='line'>      <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">route</span><span class="p-Indicator">:</span> <span class="nl">&amp;lsquo</span><span class="nv">;sonata_user_profile_edit&amp;rsquo;</span><span class="p-Indicator">,</span> <span class="nv">label</span><span class="p-Indicator">:</span> <span class="nl">&amp;lsquo</span><span class="nv">;link_edit_profile&amp;rsquo;</span><span class="p-Indicator">,</span> <span class="nv">domain</span><span class="p-Indicator">:</span> <span class="nl">&amp;lsquo</span><span class="nv">;SonataUserBundle&amp;rsquo;</span><span class="p-Indicator">}</span>
-</span><span class='line'>      <span class="c1">#- { route: &amp;lsquo;sonata_customer_addresses&amp;rsquo;, label: &amp;lsquo;link_list_addresses&amp;rsquo;, domain: &amp;lsquo;SonataCustomerBundle&amp;rsquo;}</span>
-</span><span class='line'>      <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">route</span><span class="p-Indicator">:</span> <span class="nl">&amp;lsquo</span><span class="nv">;sonata_user_profile_edit_authentication&amp;rsquo;</span><span class="p-Indicator">,</span> <span class="nv">label</span><span class="p-Indicator">:</span> <span class="nl">&amp;lsquo</span><span class="nv">;link_edit_authentication&amp;rsquo;</span><span class="p-Indicator">,</span> <span class="nv">domain</span><span class="p-Indicator">:</span> <span class="nl">&amp;lsquo</span><span class="nv">;SonataUserBundle&amp;rsquo;</span><span class="p-Indicator">}</span>
-</span><span class='line'>      <span class="c1">#- { route: &amp;lsquo;sonata_order_index&amp;rsquo;, label: &amp;lsquo;order_list&amp;rsquo;, domain: &amp;lsquo;SonataOrderBundle&amp;rsquo;}&lt;/p&gt;</span>
+</span><span class='line'>        <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">route</span><span class="p-Indicator">:</span> <span class="s">&#39;sonata_user_profile_show&#39;</span><span class="p-Indicator">,</span> <span class="nv">label</span><span class="p-Indicator">:</span> <span class="s">&#39;sonata_profile_title&#39;</span><span class="p-Indicator">,</span> <span class="nv">domain</span><span class="p-Indicator">:</span> <span class="s">&#39;SonataUserBundle&#39;</span><span class="p-Indicator">}</span>
+</span><span class='line'>        <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">route</span><span class="p-Indicator">:</span> <span class="s">&#39;sonata_user_profile_edit&#39;</span><span class="p-Indicator">,</span> <span class="nv">label</span><span class="p-Indicator">:</span> <span class="s">&#39;link_edit_profile&#39;</span><span class="p-Indicator">,</span> <span class="nv">domain</span><span class="p-Indicator">:</span> <span class="s">&#39;SonataUserBundle&#39;</span><span class="p-Indicator">}</span>
+</span><span class='line'>        <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">route</span><span class="p-Indicator">:</span> <span class="s">&#39;sonata_user_profile_edit_authentication&#39;</span><span class="p-Indicator">,</span> <span class="nv">label</span><span class="p-Indicator">:</span> <span class="s">&#39;link_edit_authentication&#39;</span><span class="p-Indicator">,</span> <span class="nv">domain</span><span class="p-Indicator">:</span> <span class="s">&#39;SonataUserBundle&#39;</span><span class="p-Indicator">}</span>
+</span><span class='line'>        <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">route</span><span class="p-Indicator">:</span> <span class="s">&#39;sonata_admin_redirect&#39;</span><span class="p-Indicator">,</span> <span class="nv">label</span><span class="p-Indicator">:</span> <span class="s">&#39;Admin</span><span class="nv"> </span><span class="s">section&#39;</span><span class="p-Indicator">,</span> <span class="nv">domain</span><span class="p-Indicator">:</span> <span class="s">&#39;SonataAdminBundle&#39;</span> <span class="p-Indicator">}</span>
+</span><span class='line'><span class="l-Scalar-Plain">&lt;/code&gt;&lt;/pre&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;</span>
 </span></code></pre></td></tr></table></div></figure></p>
-
-<p>And after run the console command:</p>
-
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>php app/console sonata:easy-extends:generate SonataUserBundle -d src
-</span></code></pre></td></tr></table></div></figure></p>
-
-<p>now if you want can substitute the <code>UserBundle</code> with <code>SonataUserBundle</code>
-or remove the <code>Users</code> in the <code>admin/dashboard</code> (rembember to enable in the <code>AppKernel</code>).</p>
-
-<p>remember to change if you don&rsquo;t use SonataUserBundle:
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">fos_user</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">group</span><span class="p-Indicator">:</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">group_class</span><span class="p-Indicator">:</span>   <span class="l-Scalar-Plain">Application\Sonata\UserBundle\Entity\Group</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<h3>To Do by yourself</h3>
-
-<p>config the SonataUserBundle as the UserBundle precedently create.
-(tips: <code>admin</code> folder)</p>
 
 <h2>configure the whole application</h2>
 
@@ -736,8 +518,6 @@ following code:</p>
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
 </pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="l-Scalar-Plain">&lt;h2&gt;This file is auto-generated during the composer install&lt;/h2&gt;</span>
@@ -755,9 +535,7 @@ following code:</p>
 </span><span class='line'>  <span class="l-Scalar-Plain">mailer_password</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
 </span><span class='line'>  <span class="l-Scalar-Plain">locale</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">en</span>
 </span><span class='line'>  <span class="l-Scalar-Plain">secret</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ThisTokenIsNotSoSecretChangeIt</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">database_path</span><span class="p-Indicator">:</span> <span class="nl">&amp;lsquo</span><span class="l-Scalar-Plain">;%kernel.root_dir%/../sql/data.db3&amp;rsquo;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">database_path</span><span class="p-Indicator">:</span> <span class="nl">&amp;lsquo</span><span class="l-Scalar-Plain">;%kernel.root_dir%/../sql/data.db3&amp;rsquo;</span>
 </span></code></pre></td></tr></table></div></figure></p>
 
 <h2>routing</h2>
@@ -805,49 +583,52 @@ in <code>app/config/routing.yml</code>:</p>
 <span class='line-number'>37</span>
 <span class='line-number'>38</span>
 <span class='line-number'>39</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">acme_blog</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="l-Scalar-Plain">;@AcmeBlogBundle/Resources/config/routing.yml&amp;rdquo;</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span>   <span class="l-Scalar-Plain">/admin/acme/blog&lt;/p&gt;</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">acme_admin_blog</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="l-Scalar-Plain">;@AcmeAdminBlogBundle/Resources/config/routing.yml&amp;rdquo;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span>   <span class="l-Scalar-Plain">/admin/acme/adminBlog&lt;/p&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;acme_user</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="l-Scalar-Plain">;@AcmeUserBundle/Resources/config/routing.yml&amp;rdquo;</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span>   <span class="l-Scalar-Plain">/&lt;/p&gt;</span>
+</span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;application_sonata_user</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="l-Scalar-Plain">;@ApplicationSonataUserBundle/Resources/config/routing.yml&amp;rdquo;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span>   <span class="l-Scalar-Plain">/&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;sonata_user_security</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="l-Scalar-Plain">;@SonataUserBundle/Resources/config/routing/sonata_security_1.xml&amp;rdquo;&lt;/p&gt;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="l-Scalar-Plain">;@SonataUserBundle/Resources/config/routing/sonata_security_1.xml&amp;rdquo;&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;sonata_user_resetting</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="l-Scalar-Plain">;@SonataUserBundle/Resources/config/routing/sonata_resetting_1.xml&amp;rdquo;</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/resetting&lt;/p&gt;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="l-Scalar-Plain">;@SonataUserBundle/Resources/config/routing/sonata_resetting_1.xml&amp;rdquo;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/resetting&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;sonata_user_profile</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="l-Scalar-Plain">;@SonataUserBundle/Resources/config/routing/sonata_profile_1.xml&amp;rdquo;</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/profile&lt;/p&gt;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="l-Scalar-Plain">;@SonataUserBundle/Resources/config/routing/sonata_profile_1.xml&amp;rdquo;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/profile&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;sonata_user_register</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="l-Scalar-Plain">;@SonataUserBundle/Resources/config/routing/sonata_registration_1.xml&amp;rdquo;</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/register&lt;/p&gt;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="l-Scalar-Plain">;@SonataUserBundle/Resources/config/routing/sonata_registration_1.xml&amp;rdquo;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/register&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;sonata_user_change_password</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="l-Scalar-Plain">;@SonataUserBundle/Resources/config/routing/sonata_change_password_1.xml&amp;rdquo;</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/profile&lt;/p&gt;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="l-Scalar-Plain">;@SonataUserBundle/Resources/config/routing/sonata_change_password_1.xml&amp;rdquo;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/profile&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;admin</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="nl">&amp;lsquo</span><span class="l-Scalar-Plain">;@SonataAdminBundle/Resources/config/routing/sonata_admin.xml&amp;rsquo;</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/admin&lt;/p&gt;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="nl">&amp;lsquo</span><span class="l-Scalar-Plain">;@SonataAdminBundle/Resources/config/routing/sonata_admin.xml&amp;rsquo;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/admin&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;sonata_user</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="nl">&amp;lsquo</span><span class="l-Scalar-Plain">;@SonataUserBundle/Resources/config/routing/admin_security.xml&amp;rsquo;</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/admin&lt;/p&gt;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="nl">&amp;lsquo</span><span class="l-Scalar-Plain">;@SonataUserBundle/Resources/config/routing/admin_security.xml&amp;rsquo;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/admin&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;_sonata_admin</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">.</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">sonata_admin</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/admin&lt;br/&gt;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">.</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">sonata_admin</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/admin&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;</span>
 </span></code></pre></td></tr></table></div></figure></p>
 
-<p>depending if you have created the <code>AdminBlogBundle</code> or not
-insert the following route in the <code>AdminBlogBundle</code> or <code>UserBundle</code>:</p>
+<p>insert the following route in the <code>AdminBlogBundle</code>:</p>
 
 <p><figure class='code'><figcaption><span>routing.yml </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -1014,10 +795,7 @@ insert the following route in the <code>AdminBlogBundle</code> or <code>UserBund
 
 <h2>generate entities for Blog</h2>
 
-<p>it depends if you have generated the BlogAdminBundle
-or not.
-If not, you can create the Entities where the <code>User.php</code> entity reside;
-otherwise create the entities inside <code>BlogAdmin\Entity\</code>:</p>
+<p>Create the entities inside <code>BlogAdmin\Entity\</code>:</p>
 
 <ul>
 <li><code>Post.php</code></li>
@@ -1339,7 +1117,7 @@ otherwise create the entities inside <code>BlogAdmin\Entity\</code>:</p>
 <span class='line-number'>310</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">?</span><span class="nx">php</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">namespace</span> <span class="nx">Acme\BlogBundle\Entity</span><span class="p">;</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">namespace</span> <span class="nx">Acme\AdminBlogBundle\Entity</span><span class="p">;</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">use</span> <span class="nx">Doctrine\ORM\Mapping</span> <span class="k">as</span> <span class="nx">ORM</span><span class="p">;</span>
 </span><span class='line'><span class="k">use</span> <span class="nx">Symfony\Component\Validator\Constraints</span> <span class="k">as</span> <span class="nx">Assert</span><span class="p">;</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
@@ -1843,7 +1621,7 @@ otherwise create the entities inside <code>BlogAdmin\Entity\</code>:</p>
 <span class='line-number'>191</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">?</span><span class="nx">php</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">namespace</span> <span class="nx">Acme\BlogBundle\Entity</span><span class="p">;</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">namespace</span> <span class="nx">Acme\AdminBlogBundle\Entity</span><span class="p">;</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">use</span> <span class="nx">Doctrine\ORM\Mapping</span> <span class="k">as</span> <span class="nx">ORM</span><span class="p">;</span>
 </span><span class='line'><span class="k">use</span> <span class="nx">Symfony\Component\Validator\Constraints</span> <span class="k">as</span> <span class="nx">Assert</span><span class="p">;</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
@@ -2179,7 +1957,7 @@ otherwise create the entities inside <code>BlogAdmin\Entity\</code>:</p>
 <span class='line-number'>142</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">?</span><span class="nx">php</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">namespace</span> <span class="nx">Acme\BlogBundle\Entity</span><span class="p">;</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">namespace</span> <span class="nx">Acme\AdminBlogBundle\Entity</span><span class="p">;</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">use</span> <span class="nx">Doctrine\ORM\Mapping</span> <span class="k">as</span> <span class="nx">ORM</span><span class="p">;</span>
 </span><span class='line'><span class="k">use</span> <span class="nx">Symfony\Component\Validator\Constraints</span> <span class="k">as</span> <span class="nx">Assert</span><span class="p">;</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
@@ -2324,12 +2102,13 @@ otherwise create the entities inside <code>BlogAdmin\Entity\</code>:</p>
 <h2>console commands</h2>
 
 <p>In order to make the application working we need to run some
-script for the console and set up the permission for Apache.</p>
+scripts into the console and set up the permissions for Apache.</p>
 
 <h3>Setting up the DataBase</h3>
 
-<p>run the following console commands:
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p>run the following console commands:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2341,29 +2120,38 @@ script for the console and set up the permission for Apache.</p>
 
 <h3>Setting up the web application</h3>
 
-<p>run:
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p>run:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>php app/console assets:install
 </span></code></pre></td></tr></table></div></figure></p>
 
 <h3>Setting Permissions</h3>
 
-<p>we have to give the permissions to Apache for the
-following file/folder:
-- <code>app/cache</code>
-- <code>app/logs</code>
-- <code>sql/</code>
-- <code>sql/data.db3</code></p>
+<p>we have to give the permissions to Apache for the following file/folder:</p>
 
-<p>run the following commands:
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<ul>
+<li><code>app/cache</code></li>
+<li><code>app/logs</code></li>
+<li><code>sql/</code></li>
+<li><code>sql/data.db3</code></li>
+</ul>
+
+
+<p>run the following commands:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo chown -R apache.apache app/cache app/logs sql
 </span><span class='line'>sudo chmod -R <span class="m">775</span> app/cache app/logs sql
 </span></code></pre></td></tr></table></div></figure></p>
 
 <p>remember after that you have to perform other operation
-with root or apache user.</p>
+with root or apache user or insert into apache user.</p>
+
+<p>P.S.</p>
+
+<p>Maybe you have to replace <code>apache</code> with <code>www-data</code> depending on the distro you&rsquo;re using.</p>
 
 <h2>browse application</h2>
 
@@ -2373,10 +2161,8 @@ in <code>app_dev.php/admin</code>.</p>
 
 <h2>Conclusion</h2>
 
-<p>We have illustraded in a wide way how can set up a first
-web application. However the <code>UserBundle</code> is not required,
-because the <code>SonataUserBundle</code> has already the entities
-needed for authentication.</p>
+<p>I illustraded in a wide way how can set up a first
+web application.</p>
 
 <p>You can see the repository here:
 <a href="https://github.com/Raffaello/symfony2-example.git">https://github.com/Raffaello/symfony2-example.git</a></p>
